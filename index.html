@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="Description" content="style.css">
+    <meta name="Description" content="Resume">
     <meta name="theme-color" content="#d36060"/>
     <title>
       Ariana Azzaro Resume
     </title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="icon" 
       type="image/png" 
@@ -58,18 +58,6 @@
     </script>
   </head>
   <body class="body">
-    <div class="menu-button" x-data="{ open: false }">
-      <!-- hamburger menu button -->
-      <button class="menu-button" @click="open = true">Menu</button>
-      <ul x-show="open" @click.away="open = false">
-        <button class="menu-option-button" onclick="toggleBoxes()">
-          Toggle Boxes
-        </button>
-        <button class="menu-option-button" onclick="toggleDark()">
-          Dark Mode
-        </button>
-      </ul>
-    </div>
     <article class="resume">
       <section class="box header">
         <!-- <section>HEADER</section> -->
@@ -84,8 +72,40 @@
         <hr class="header_contact_hr" />
       </section>
         <section class="box overview_summaryarea">
-       
         </section>
+      
+            <section class="box education">
+        <section class="education_label">EDUCATION</section>
+        <hr class="education_hr" />
+        <!-- <section>EDUCATION</section> -->
+        <section class="box education_list">
+          <section class="box education_entry">
+            <!-- <section>EDUCATIONENTRY</section> -->
+            <section class="education_entry_header">
+              <section class="education_entry_title">
+                <span class="education_entry_title_name">Allentown High School</span> |
+                Allentown, NJ
+              </section>
+              <section class="education_entry_subtitle">
+                Deploma
+              </section>
+            </section>
+          </section>
+
+          <section class="box education_entry">
+            <!-- <section>EDUCATIONENTRY</section> -->
+            <section class="education_entry_header">
+              <section class="education_entry_title">
+                <span class="education_entry_title_name">B.S. Media Arts & Design Cocentration in Creative Advertising</span> |
+                James Madison University
+              </section>
+              <section class="education_entry_subtitle">
+                Deploma
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
 
         <section class="box overview_skillsarea">
           <!-- <section>SKILLSAREA</section> -->
@@ -263,39 +283,6 @@
               <section class="box workhistory_entry_item">
                 &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
                 culpa ullamco qui adipisicing in sunt
-              </section>
-            </section>
-          </section>
-        </section>
-      </section>
-
-      <section class="box education">
-        <section class="education_label">EDUCATION</section>
-        <hr class="education_hr" />
-        <!-- <section>EDUCATION</section> -->
-        <section class="box education_list">
-          <section class="box education_entry">
-            <!-- <section>EDUCATIONENTRY</section> -->
-            <section class="education_entry_header">
-              <section class="education_entry_title">
-                <span class="education_entry_title_name">Allentown High School</span> |
-                Allentown, NJ
-              </section>
-              <section class="education_entry_subtitle">
-                Deploma
-              </section>
-            </section>
-          </section>
-
-          <section class="box education_entry">
-            <!-- <section>EDUCATIONENTRY</section> -->
-            <section class="education_entry_header">
-              <section class="education_entry_title">
-                <span class="education_entry_title_name">B.S. Media Arts & Design Cocentration in Creative Advertising</span> |
-                James Madison University
-              </section>
-              <section class="education_entry_subtitle">
-                Deploma
               </section>
             </section>
           </section>
