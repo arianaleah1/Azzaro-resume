@@ -1,89 +1,577 @@
-* {
-  max-width: 700px;
-  margin: auto;
+/* NOTE: the inspector tools for css-grid are better in Firefox than Chrome */
+/* NOTE: if you are changing complex grid, make/comment-out copy, and make changes gradually */
+/* NOTE: columns/rows need to match area */
+/* NOTE: no duplicate area-names in the area section */
+/* NOTE: leaving empty class css, allows for easier browser tweaks */
+/* NOTE: had to use &nbsp; to make skills with | to look good */
+/* NOTE: you may need to play with section widths if fields wrap to next line */
+
+/* 
+annimation plan:
+- [ 0.0s] zoom1 (1s) header_fullname
+- [ 1.0s] zoom2 (1s) overview_titlearea_title
+- [ 2.0s] zoom2 (1s) overview_titlearea_subtitle
+- [ 3.0s] zoom1 (1s) header_fullname 
+*/
+
+:root {
+  --theme-color: #9950f1; /* using a purple color */
+  --theme-color-inner: black;
+  --background-color: white;
+  --color: black;
+  --label-color: #444444;
+
 }
 
-
-/*body {
-    min-width: 500px;
-}*/
-
-div {
-  border-radius: 5px;
-}
-
-#header {
-  height: 40px;
-  width: 100%;
-  background-color: #ffcccc;
-  position: fixed;
-  z-index: 1;
-}
-
-#title {
-  margin-left: 3%;
-}
-
-#footer {
-  height: 50px;
-  width: 100%;
-  background-color: #ffcccc;
-  clear: both;
-  position: relative;
-}
-
-.left {
-  height: 1000px;
-  width: 45px;
-  background-color: #e0eeee;
-  float: left;
-  position: fixed;
-}
-
-.right {
-  height: 1000px;
-  width: 45px;
-  background-color: #e0eeee;
-  float: right;
-  position: inherit;
-}
-
-.stuff {
-  display: inline-block;
-  margin-top: 6px;
-  margin-left: 45px;
-  width: 75%;
-  height: 1000px;
-}
-
-p,
-li {
-  font-family: 'Cormorant Garamond';
-}
-
-.head {
-  font-size: 20px;
-}
-
-#name {
-  font-family: Sacramento;
-  float: right;
-  margin-top: 10px;
-  margin-right: 4%;
+body {
+  background-color: var(--background-color);
+  color: var(--color);
 }
 
 a {
-  color: black;
-  text-decoration: none;
+  /* text-decoration: none; */
+  color: inherit;
 }
 
-@media only screen and (max-width: 430px) {
-  .left,
-  .right {
+.box {
+  margin: 0px;
+  padding: 5px;
+  /* DEBUG: uncomment to see boxes around pieces */
+  /* box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.35); */
+}
+
+.box-off {
+  box-shadow: none;
+}
+
+.menu-button {
+  border: none;
+  min-width: 40px;
+  color: #444444;
+}
+
+.menu-button:focus {
+  outline: 0;
+}
+
+.menu-option-button {
+  border: none;
+  min-width: 40px;
+  padding: 5px;
+  color: #444444;
+}
+
+.menu-option-button:focus {
+  outline: 0;
+}
+
+.resume {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "overview"
+    "workhistory"
+    "education"
+    "learning"
+    "awards";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 10pt;
+}
+
+.page_break {
+  display: none;
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header_fullname"
+    "header_contact";
+}
+
+.header_fullname {
+  grid-area: header_fullname;
+  margin: auto; /* center horizontally */
+  font-size: 32pt;
+  font-weight: bold;
+  color: var(--label-color);
+  animation-name: zoom1;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+
+.header_contact {
+  grid-area: header_contact;
+  margin: auto; /* center horizontally */
+  text-align: center;
+  width: 600px; /* NOTE: you may need to play with this if fields wrap to next line */
+}
+
+.header_contact_symbol {
+  color: var(--theme-color-inner);
+  font-weight: bolder;
+}
+
+.header_contact_hr {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  border-color: transparent;
+  width: 102%;
+  height: 1px;
+  margin-left: -10px;
+  margin-top: -4px;
+}
+
+.overview {
+  grid-area: overview;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "overview_titlearea"
+    "overview_summaryarea"
+    "overview_qualificationsarea"
+    "overview_skillsarea";
+}
+
+.overview_titlearea {
+  padding: 0px;
+  grid-area: overview_titlearea;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "overview_titlearea_title"
+    "overview_titlearea_subtitle";
+}
+
+.overview_titlearea_title {
+  grid-area: overview_titlearea_title;
+  margin: auto; /* center horizontally */
+  font-size: 20pt;
+  font-weight: bold;
+  color: var(--label-color);
+  animation-name: zoom2;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+
+.overview_titlearea_subtitle {
+  grid-area: overview_titlearea_subtitle;
+  margin: auto; /* center horizontally */
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  color: var(--label-color);
+  animation-name: zoom2;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 2.0s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  width: 400px; /* NOTE: you may need to play with this if fields wrap to next line */
+}
+
+/* OVERVIEW SUMMARY AREA */
+.overview_summaryarea {
+  grid-area: overview_summaryarea;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "overview_summaryarea_description"
+    "overview_summaryarea_list";
+}
+
+.overview_summaryarea_description {
+  grid-area: overview_summaryarea_description;
+  margin: auto; /* center horizontally */
+}
+
+.overview_summaryarea_list {
+  grid-area: overview_summaryarea_list;
+  margin: auto; /* center horizontally */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0px;
+}
+
+.overview_summaryarea_list_item {
+  margin: 0px;
+  padding: 2px;
+}
+
+.overview_summaryarea_list_item:before {
+  content: "\2022";
+  font-weight: bold;
+}
+
+/* OVERVIEW QUALIFICATIONS AREA */
+.overview_qualificationsarea {
+  padding: 0px;
+  grid-area: overview_qualificationsarea;
+  margin: auto; /* center horizontally */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "overview_qualificationsarea_title"
+    "overview_qualificationsarea_list";
+  grid-gap: 0px;
+  width: 400px; /* NOTE: you may need to play with this if fields wrap to next line */
+}
+
+.overview_qualificationsarea_title {
+  grid-area: overview_qualificationsarea_title;
+  margin: auto; /* center horizontally */
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--label-color);
+}
+
+.overview_qualificationsarea_list {
+  grid-area: overview_qualificationsarea_list;
+  margin: auto; /* center horizontally */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0px;
+}
+
+.overview_qualificationsarea_list_item {
+}
+
+.overview_qualificationsarea_list_item:before {
+  content: "- ";
+}
+
+.overview_qualificationsarea_list_item:after {
+  content: " -";
+}
+
+/* OVERVIEW SKILLS AREA */
+.overview_skillsarea {
+  padding: 0px;
+  grid-area: overview_skillsarea;
+  margin: auto; /* center horizontally */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "overview_skillsarea_title"
+    "overview_skillsarea_list";
+  grid-gap: 0px;
+}
+
+.overview_skillsarea_title {
+  grid-area: overview_skillsarea_title;
+  margin: auto; /* center horizontally */
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--label-color);
+}
+
+.overview_skillsarea_list {
+  grid-area: overview_skillsarea_list;
+  margin: auto; /* center horizontally */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0px;
+}
+
+.overview_skillsarea_list_item {
+  margin: 0px;
+  padding: 4px;
+}
+
+
+/* WORK HISTORY */
+.workhistory {
+  margin-top: 30px;
+  grid-area: workhistory;
+}
+.workhistory_label {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  color: var(--theme-color-inner);
+  font-weight: bold;
+  width: 20%;
+  padding: 6px;
+  margin-bottom: -10px;
+  margin-left: -10px;
+}
+.workhistory_hr {
+  background-color: gray;
+  background-color: var(--theme-color);
+  border-color: transparent;
+  width: 102%;
+  height: 2px;
+  margin-left: -10px;
+}
+
+.workhistory_list {
+}
+
+.workhistory_entry {
+  margin-top: 15px;
+}
+
+.workhistory_entry_header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0px;
+}
+
+.workhistory_entry_title {
+}
+
+.workhistory_entry_title_name {
+  color: var(--label-color);
+}
+
+.workhistory_entry_title_pad {
+  text-align: right;
+}
+
+.workhistory_entry_subtitle {
+}
+
+.workhistory_entry_dates {
+  text-align: right;
+}
+
+.workhistory_entry_list {
+}
+
+.workhistory_entry_item {
+  margin: 0px;
+  padding: 2px;
+}
+
+.education {
+  grid-area: education;
+}
+
+.education_label {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  color: var(--theme-color-inner);
+  font-weight: bold;
+  width: 20%;
+  padding: 6px;
+  margin-bottom: -10px;
+  margin-left: -10px;
+}
+
+.education_hr {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  border-color: transparent;
+  width: 102%;
+  height: 2px;
+  margin-left: -10px;
+}
+
+.education_list {
+}
+
+.education_entry {
+}
+
+.education_entry_header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0px;
+}
+
+.education_entry_title {
+}
+
+.education_entry_title_name {
+  color: var(--label-color);
+}
+
+.education_entry_subtitle {
+}
+
+.learning {
+  grid-area: learning;
+}
+.learning_label {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  color: var(--theme-color-inner);
+  font-weight: bold;
+  width: 20%;
+  padding: 6px;
+  margin-bottom: -10px;
+  margin-left: -10px;
+}
+.learning_hr {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  border-color: transparent;
+  width: 102%;
+  height: 2px;
+  margin-left: -10px;
+}
+
+.learning_list {
+}
+
+.learning_entry {
+}
+
+.learning_entry_header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0px;
+}
+
+.learning_entry_title {
+}
+
+.learning_entry_title_name {
+  color: var(--label-color);
+}
+
+.learning_entry_subtitle {
+}
+
+.awards {
+  grid-area: awards;
+}
+.awards_label {
+  /* background-color: gray; */
+  background-color: var(--theme-color);
+  color: var(--theme-color-inner);
+  font-weight: bold;
+  width: 20%;
+  padding: 6px;
+  margin-bottom: -10px;
+  margin-left: -10px;
+}
+.awards_hr {
+  /* background-color: gray; */
+  background-color:  var(--theme-color);
+  border-color: transparent;
+  width: 102%;
+  height: 2px;
+  margin-left: -10px;
+}
+
+.awards_title {
+  color: var(--label-color); 
+}
+
+.awards_list {
+}
+
+.awards_entry {
+  margin: 0px;
+  padding: 2px;
+}
+
+.awards_entry_header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0px;
+}
+
+.awards_entry_title {
+}
+
+.awards_entry_subtitle {
+}
+
+/* @media (min-width: 1200px) {
+  .resume {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "header overview"
+      "workhistory education"
+      "learning awards";
+    grid-gap: 5px;
+  }
+} */
+
+@media only screen and (max-width: 600px) {
+  .overview_qualificationsarea_list {
+    grid-area: overview_qualificationsarea_list;
+    margin: auto; /* center horizontally */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 0px;
+  }
+  .overview_qualificationsarea_list_item:after {
+    content: "";
+  }
+}
+
+@keyframes zoom1 {
+  0% {
+    opacity: 1.0;
+  }
+  12.5% {
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 1.0;
+  }
+  75% {
+    opacity: 1.0;
+  }
+  87.5% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes zoom2 {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@media print {
+  /* remove any screen only styles, for example link underline */
+  a {
+    text-decoration: none;
+  }
+  
+  .menu-button {
     display: none;
   }
-  .stuff {
-    width: 100%;
-    margin-left: 10px;
+
+  .box {
+    box-shadow: none;
   }
+
+  .page_break {
+    display: block;
+  }  
+}
+
+@page {
+  padding: 0;
+  margin: 0cm;
+  size: A4 portrait;
+
 }
