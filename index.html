@@ -1,57 +1,530 @@
 <!DOCTYPE html>
-  <html>
-<head lang=en>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="Description" content="CSS Grid Resume">
+    <meta name="theme-color" content="#d36060"/>
+    <title>
+      Ariana Azzaro Resume
+    </title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" 
+      type="image/png" 
+      href="./favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180x180.png">
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.10.1/dist/alpine.js"
+      defer
+    ></script>
+    <script>
+      function enableBoxes() {
+        var list = document.getElementsByClassName("box");
+        //console.log(list);
+        //console.log(list.length);
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].style.boxShadow == "none") {
+            list[i].style.boxShadow = "0 5px 9px 0 rgba(0, 0, 0, 0.35)";
+          } else {
+            list[i].style.boxShadow = "none";
+          }
+        }
+      }
+      function toggleBoxes() {
+        var list = document.getElementsByClassName("box");
+        //console.log(list);
+        //console.log(list.length);
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].style.boxShadow == "none") {
+            list[i].style.boxShadow = "0 5px 9px 0 rgba(0, 0, 0, 0.35)";
+          } else {
+            list[i].style.boxShadow = "none";
+          }
+        }
+      }
+      function toggleDark() {
+        const root = document.documentElement;
+        if (root.style.getPropertyValue('--background-color') == 'white') {
+          root.style.setProperty('--background-color', '#111111')
+          root.style.setProperty('--color', '#aaaaaa')
+        }
+        else {
+          root.style.setProperty('--background-color', 'white')
+          root.style.setProperty('--color', 'black')
+        }
+      }
+    </script>
+  </head>
+  <body class="body">
+    <div class="menu-button" x-data="{ open: false }">
+      <!-- hamburger menu button -->
+      <button class="menu-button" @click="open = true">Menu</button>
+      <ul x-show="open" @click.away="open = false">
+        <button class="menu-option-button" onclick="toggleBoxes()">
+          Toggle Boxes
+        </button>
+        <button class="menu-option-button" onclick="toggleDark()">
+          Dark Mode
+        </button>
+      </ul>
+    </div>
+    <article class="resume">
+      <section class="box header">
+        <!-- <section>HEADER</section> -->
+        <section class="box header_fullname">FULL NAME</section>
+        <section class="box header_contact">
+          <!-- <section>CONTACT</section> -->
+          <span class="header_contact_symbol">C:</span>​ ​(nnn) nnn-nnnn
+          &nbsp;|&nbsp; ​<span class="header_contact_symbol">A:</span>​​ADDRESS
+          &nbsp;|&nbsp; <span class="header_contact_symbol">E:</span>​​ EMAIL
+          &nbsp;|&nbsp; <span class="header_contact_symbol">LI:</span>​​
+          linkedin.com/in/FullNameAtLinkeding
+        </section>
+        <hr class="header_contact_hr" />
+      </section>
+
+      <section class="box overview">
+        <section class="box overview_titlearea">
+          <!-- <section>TITLEAREA</section> -->
+          <section class="box overview_titlearea_title">
+            JOBTITLE
+          </section>
+          <section class="box overview_titlearea_subtitle">
+            <!-- <section>SUBTITLE</section> -->
+            PART1 &nbsp;&bull;&nbsp; PART2 &nbsp;&bull;&nbsp; PART3
+            &nbsp;&bull;&nbsp; PART4
+          </section>
+        </section>
+
+        <section class="box overview_summaryarea">
+          <!-- <section>SUMMARYAREA</section> -->
+          <section class="box overview_summaryarea_description">
+            DESCRIPTION Do ut eu tempor dolor laborum. Tempor consequat enim ea
+            aliqua tempor nulla adipisicing
+          </section>
+          <section class="box overview_summaryarea_list">
+            <!-- <section>SUMMARYLIST</section> -->
+            <section class="box overview_summaryarea_list_item item1">
+              ITEM1 Incididunt amet minim voluptate elit ex laborum
+            </section>
+            <section class="box overview_summaryarea_list_item item2">
+              ITEM2 eu mollit nostrud sit irure qui magna eu. Minim culpa
+              ullamco qui adipisicing in sunt
+            </section>
+            <section class="box overview_summaryarea_list_item item3">
+              ITEM3 Sint exercitation mollit occaecat id incididunt excepteur
+              duis ut. Amet ullamco
+            </section>
+            <section class="box overview_summaryarea_list_item item4">
+              ITEM4 sit Lorem mollit in veniam officia eu sint. Et reprehenderit
+              excepteur eiusmod
+            </section>
+          </section>
+        </section>
+
+        <section class="box overview_qualificationsarea">
+          <!-- <section>QUALIFICATIONSAREA</section> -->
+          <section class="box overview_qualificationsarea_title">
+            QUALIFICATIONS
+          </section>
+          <section class="box overview_qualificationsarea_list">
+            <!-- <section>QUALIFICATIONSLIST</section> -->
+            <!-- NOTE: list these in priority order, css grid will re-arrange -->
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM1
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM2
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM3
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM4
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM5
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM6
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM7
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM8
+            </section>
+            <section class="box overview_qualificationsarea_list_item">
+              ITEM9
+            </section>
+          </section>
+        </section>
+
+        <section class="box overview_skillsarea">
+          <!-- <section>SKILLSAREA</section> -->
+          <section class="box overview_skillsarea_title">
+            SKILLS
+          </section>
+          <section class="box overview_skillsarea_list">
+            <!-- <section>SKILLSLIST</section> -->
+            <section class="box overview_skillsarea_list_item">
+              SKILL01
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL02
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL03
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL04
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL05
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL06
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL07
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL08
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL09
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL10
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL11
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL12
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL13
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL14
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL15
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL16
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL17
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL18
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL19
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL20
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL21
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL22
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL23
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL24
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL25
+            </section>
+            <section class="box overview_skillsarea_list_item">
+              SKILL26
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section class="box workhistory">
+        <section class="workhistory_label">WORK HISTORY</section>
+        <hr class="workhistory_hr" />
+        <!-- <section>WORKHISTORY</section> -->
+        <section class="box workhistory_list">
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY1</span> |
+                LOCATION1
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
+                culpa ullamco qui adipisicing in sunt
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM3 Sint exercitation mollit occaecat id incididunt
+                excepteur duis ut. Amet ullamco
+              </section>
+            </section>
+          </section>
+
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY2</span> |
+                LOCATION2
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
+                culpa ullamco qui adipisicing in sunt
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM3 Sint exercitation mollit occaecat id incididunt
+                excepteur duis ut. Amet ullamco
+              </section>
+            </section>
+          </section>
+
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY3</span> |
+                LOCATION3
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
+                culpa ullamco qui adipisicing in sunt
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM3 Sint exercitation mollit occaecat id incididunt
+                excepteur duis ut. Amet ullamco
+              </section>
+            </section>
+          </section>
+
+          <section class="page_break">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </section>
+
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY4</span> |
+                LOCATION4
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
+                culpa ullamco qui adipisicing in sunt
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM3 Sint exercitation mollit occaecat id incididunt
+                excepteur duis ut. Amet ullamco
+              </section>
+            </section>
+          </section>
+
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY5</span> |
+                LOCATION5
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+            </section>
+          </section>
+
+          <section class="box workhistory_entry">
+            <!-- <section>WORKENTRY</section> -->
+            <section class="workhistory_entry_header">
+              <section class="workhistory_entry_title">
+                <span class="workhistory_entry_title_name">COMPANY6</span> |
+                LOCATION6
+              </section>
+              <section class="workhistory_entry_title_pad"></section>
+              <section class="workhistory_entry_subtitle">Job Role</section>
+              <section class="workhistory_entry_dates">DATE1 - DATE2</section>
+            </section>
+            <section class="workhistory_entry_list">
+              <section class="box workhistory_entry_item">
+                &bull; ITEM1 Incididunt amet minim voluptate elit ex laborum
+              </section>
+              <section class="box workhistory_entry_item">
+                &bull; ITEM2 eu mollit nostrud sit irure qui magna eu. Minim
+                culpa ullamco qui adipisicing in sunt
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section class="box education">
+        <section class="education_label">EDUCATION</section>
+        <hr class="education_hr" />
+        <!-- <section>EDUCATION</section> -->
+        <section class="box education_list">
+          <section class="box education_entry">
+            <!-- <section>EDUCATIONENTRY</section> -->
+            <section class="education_entry_header">
+              <section class="education_entry_title">
+                <span class="education_entry_title_name">EDUCATION1</span> |
+                LOCATION1
+              </section>
+              <section class="education_entry_subtitle">
+                Acheivement or Deploma
+              </section>
+            </section>
+          </section>
+
+          <section class="box education_entry">
+            <!-- <section>EDUCATIONENTRY</section> -->
+            <section class="education_entry_header">
+              <section class="education_entry_title">
+                <span class="education_entry_title_name">EDUCATION2</span> |
+                LOCATION2
+              </section>
+              <section class="education_entry_subtitle">
+                Acheivement or Deploma
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section class="box learning">
+        <section class="learning_label">LEARNING</section>
+        <hr class="learning_hr" />
+        <!-- <section>LEARNING</section> -->
+        <section class="box learning_list">
+          <section class="box learning_entry">
+            <!-- <section>LEARNINGENTRY</section> -->
+            <section class="learning_entry_header">
+              <section class="learning_entry_title">
+                <span class="learning_entry_title_name">LEARNING1</span>
+                (something)
+              </section>
+              <section class="learning_entry_subtitle">
+                Eiusmod cupidatat aliqua exercitation et ea velit. Nostrud
+                voluptate minim cupidatat laborum enim. Aliqua qui proident
+                magna consequat proident do culpa. Adipisicing proident
+              </section>
+            </section>
+          </section>
+
+          <section class="box learning_entry">
+            <!-- <section>LEARNINGENTRY</section> -->
+            <section class="learning_entry_header">
+              <section class="learning_entry_title">
+                <span class="learning_entry_title_name">LEARNING2</span> |
+                something
+              </section>
+              <section class="learning_entry_subtitle">
+                Eiusmod cupidatat aliqua exercitation et ea velit.
+              </section>
+            </section>
+          </section>
+
+          <section class="box learning_entry">
+            <!-- <section>LEARNINGENTRY</section> -->
+            <section class="learning_entry_header">
+              <section class="learning_entry_title">
+                <span class="learning_entry_title_name">LEARNING3</span>
+              </section>
+              <section class="learning_entry_subtitle">
+                Eiusmod cupidatat aliqua exercitation et ea velit. Nostrud
+                voluptate minim cupidatat laborum enim. Aliqua
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section class="box awards">
+        <section class="awards_label">AWARDS</section>
+        <hr class="awards_hr" />
+        <section class="box awards_title">AWARDS</section>
+        <!-- <section>AWARDS</section> -->
+        <section class="box awards_list">
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim.
+          </section>
+          <section class="box award_entry">&nbsp;</section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim. Aliqua qui
+          </section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim. Aliqua qui proident
+          </section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim.
+          </section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim. Aliqua qui proident
+            magna consequat
+          </section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim. Aliqua
+          </section>
+          <section class="box award_entry">
+            Nostrud voluptate minim cupidatat laborum enim.
+          </section>
+        </section>
+      </section>
+    </article>
+  </main>
+  <script src="./js/index.js"></script>
+  </body>
 </html>
-   <body>
-<div id="header"></div>
-<div class="left"></div>
-<div class="stuff">
-  <br><br>
-  <h1>Resume</h1>
-  <h2>Ariana Azzaro | arianaazzaro@gmail.com</h2>
-  <hr/>
-  <br>
- 
-  <p class="head">Education</p> 
-  <ul style="list-style-type:none;">
-  <li>High School Diploma| June 2019 | Allentown High School</li>
-  <li>B.S. In Media Arts and Design (Creative Advertising) | Graduation Year 2023 | James Madison University</li>
-  </ul>
-  
-  <p class="head">Relevant Experience</p> 
-  <ul style="list-style-type:none;">
-  <li>Newsletter Chairman | Tri Delta Sorority | May 2022 - Current</li>
-  <li>Director of Member Selection | Tri Delta Sorority | August 2021- March 2021</li>
-  <li>Social Media Manager | Ivy On Main | May 2021-August 2021</li>
-  <li>Waitress | Papa's Tomato Pies | May 2020-November 2020</li>
-  </ul>
- 
-  <p class="head">Interests</p>
-  <ul>
-    <li>Advertising</li>
-    <li>Marketing</li>
-    <li>Design Work</li>
-    <li>Social Media</li>
-  </ul>
- 
-  <p class="head">Skills</p>
-  <ul>
-    <li>Adobe Cloud & Micorsoft Programs</li>
-    <li>Project Management</li>
-    <li>Organizational Skills</li>
-    <li>Social Media Management</li>
-  
-  <p class="head">Extracurriculars</p>
-  <ul>
-    <li>Leadership Positions in Tri Delta</li>
-    <li>SMAD Club</li>
-    <li>Yoga Club</li>
-  </ul>
-</body>
-</div>
-<div class="right"></div>
-<div id="footer">
-  <h2 id="name">Ariana Azzaro</h2></div>
+
