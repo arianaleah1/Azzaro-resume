@@ -1,18 +1,3 @@
-/* NOTE: the inspector tools for css-grid are better in Firefox than Chrome */
-/* NOTE: if you are changing complex grid, make/comment-out copy, and make changes gradually */
-/* NOTE: columns/rows need to match area */
-/* NOTE: no duplicate area-names in the area section */
-/* NOTE: leaving empty class css, allows for easier browser tweaks */
-/* NOTE: had to use &nbsp; to make skills with | to look good */
-/* NOTE: you may need to play with section widths if fields wrap to next line */
-
-/* 
-annimation plan:
-- [ 0.0s] zoom1 (1s) header_fullname
-- [ 1.0s] zoom2 (1s) overview_titlearea_title
-- [ 2.0s] zoom2 (1s) overview_titlearea_subtitle
-- [ 3.0s] zoom1 (1s) header_fullname 
-*/
 
 :root {
   --theme-color: #9950f1; /* using a purple color */
